@@ -1,7 +1,12 @@
+import 'package:aplikasitest1/flutter_widget/fab_widget.dart';
+import 'package:aplikasitest1/flutter_widget/image_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:aplikasitest1/flutter_widget/test_widget.dart';
+import 'package:aplikasitest1/flutter_widget/loading_cupertino.dart';
 
 void main() {
   runApp(const MyApp());
+  //runApp(FabWidget());
 }
 
 class MyApp extends StatelessWidget {
@@ -13,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
+        //This is the theme of your application.
         //
         // TRY THIS: Try running your application with "flutter run". You'll see
         // the application has a purple toolbar. Then, without quitting the app,
@@ -27,7 +32,7 @@ class MyApp extends StatelessWidget {
         // restart instead.
         //
         // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
+         //tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
@@ -68,12 +73,6 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _incrementCounter1() {
-    setState(() {
-      _counter--;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -111,17 +110,27 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
+            const TextWidgate(),
+            const MyImageWidget(),
+              
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            const SizedBox(height: 20),//new
+            //NEW
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoadingCupertino()),
+                );    
+            },
+            child: const Text('Tampikan LoadingCupertino'),
+            ),
           ],
         ),
       ),
-
       
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
